@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shri Adinath Exports | Dashboard</title>
+
+    <!-- Bootstrap Icons -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="css/admin.css">
+    <!-- Favicon -->
+    <link rel="shortcut icon"
+        href="https://is1-ssl.mzstatic.com/image/thumb/Purple221/v4/af/8e/77/af8e77d0-ebf9-2d97-1d49-61bb8e4cad84/AppIcon-0-0-1x_U007emarketing-0-8-0-85-220.png/200x200ia-75.webp"
+        type="image/x-icon">
+</head>
+
+<body>
+
+    <div class="dashboard-wrapper">
+        <!-- Dashboard Overlay for Mobile -->
+        <div class="sidebar-overlay" id="sidebarOverlay"></div>
+
+        <!-- Sidebar -->
+        <aside class="sidebar" id="sidebar">
+            <div class="sidebar-logo">
+                <i class="bi bi-hexagon-fill"></i>
+                <span>ADINATH <span style="opacity: 0.6; font-weight: 400;">ADMIN</span></span>
+            </div>
+
+            <nav>
+                <ul class="nav-menu">
+                    <li class="nav-item">
+                        <a href="#overview" class="nav-link active">
+                            <i class="bi bi-house-door"></i>
+                            <span>Overview</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#products" class="nav-link">
+                            <i class="bi bi-box-seam"></i>
+                            <span>Product Catalog</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#analytics" class="nav-link">
+                            <i class="bi bi-bar-chart-line"></i>
+                            <span>Search Analytics</span>
+                        </a>
+                    </li>
+                    <li class="nav-item"
+                        style="margin-top: 5rem; border-top: 1px solid var(--glass-border); padding-top: 2rem;">
+                        <a href="../index.html" class="nav-link">
+                            <i class="bi bi-box-arrow-left"></i>
+                            <span>Back to Website</span>
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <header class="top-bar animate-fade-in">
+                <button class="mobile-toggle" id="mobileToggle">
+                    <i class="bi bi-list"></i>
+                </button>
+                <div class="greeting">
+                    <h1 id="adminGreeting">Welcome back, Sanjay</h1>
+                    <p>Here's what's happening with Adinath Exports today.</p>
+                </div>
+            </header>
+
+            <!-- Stats -->
+            <div class="stats-grid animate-fade-in" style="animation-delay: 0.1s;">
+                <div class="stat-card">
+                    <div class="stat-icon"><i class="bi bi-box-seam"></i></div>
+                    <div class="stat-label">Total SKUs</div>
+                    <div class="stat-value" id="totalProductsCount">0</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon"
+                        style="color: #ffaa00; background: rgba(255,170,0,0.1); border-color: rgba(255,170,0,0.2);">
+                        <i class="bi bi-lightning-charge"></i>
+                    </div>
+                    <div class="stat-label">Total Searches</div>
+                    <div class="stat-value" id="totalSearchesCount">0</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon"
+                        style="color: #00f5a0; background: rgba(0,245,160,0.1); border-color: rgba(0,245,160,0.2);">
+                        <i class="bi bi-graph-up-arrow"></i>
+                    </div>
+                    <div class="stat-label">Top Demand</div>
+                    <div class="stat-value" id="topSearchQuery" style="font-size: 1.25rem;">-</div>
+                </div>
+            </div>
+
+            <!-- Manage Products Section -->
+            <section id="products" class="admin-card animate-fade-in"
+                style="animation-delay: 0.2s; margin-bottom: 3.5rem;">
+                <div class="card-header">
+                    <h2 class="card-title"><i class="bi bi-layers"></i> Inventory Management</h2>
+                    <button class="btn-primary-premium" onclick="showAddProductModal()">
+                        <i class="bi bi-plus-circle"></i> Add New SKU
+                    </button>
+                </div>
+
+                <div style="overflow-x: auto;">
+                    <table class="premium-table">
+                        <thead>
+                            <tr>
+                                <th>Product Details</th>
+                                <th>Category</th>
+                                <th style="text-align: right;">Management</th>
+                            </tr>
+                        </thead>
+                        <tbody id="adminProductTable">
+                            <!-- JS will populate -->
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+
+            <!-- Analytics Section -->
+            <section id="analytics" class="admin-card animate-fade-in" style="animation-delay: 0.3s;">
+                <div class="card-header">
+                    <h2 class="card-title"><i class="bi bi-search"></i> Market Interest</h2>
+                </div>
+                <div style="max-height: 500px; overflow-y: auto;">
+                    <table class="premium-table">
+                        <thead>
+                            <tr>
+                                <th>Timestamp</th>
+                                <th>Search Query</th>
+                            </tr>
+                        </thead>
+                        <tbody id="recentSearchTable">
+                            <!-- JS will populate -->
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <!-- Modals (Simple overlays) -->
+    <div id="productModal"
+        style="display:none; position: fixed; inset: 0; background: rgba(0,0,0,0.85); backdrop-filter: blur(10px); z-index: 2000; align-items: center; justify-content: center;">
+        <div class="admin-card" style="width: 550px; position: relative; border-radius: 40px;">
+            <header class="card-header" style="margin-bottom: 2rem;">
+                <h3 id="modalTitle" style="font-size: 1.75rem; font-weight: 700;">Edit Product</h3>
+                <button onclick="closeModal()"
+                    style="background: rgba(255,255,255,0.05); border: 1px solid var(--glass-border); color: #fff; width: 44px; height: 44px; border-radius: 50%; cursor: pointer;"><i
+                        class="bi bi-x-lg"></i></button>
+            </header>
+            <form id="productForm">
+                <input type="hidden" id="editIndex">
+
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem;">
+                    <div class="form-group">
+                        <label class="stat-label">SKU Name</label>
+                        <input type="text" id="prodName" class="form-control" placeholder="Pencils, Locks etc."
+                            required>
+                    </div>
+                    <div class="form-group">
+                        <label class="stat-label">Category</label>
+                        <select id="prodCategory" class="form-control" onchange="toggleCustomCategory()">
+                            <!-- Categories will be loaded dynamically -->
+                        </select>
+                    </div>
+                </div>
+
+                <div id="customCategoryGroup" class="form-group animate-fade-in"
+                    style="display: none; margin-top: 1.5rem;">
+                    <label class="stat-label">New Category Name</label>
+                    <input type="text" id="customCategory" class="form-control" placeholder="Enter new category name">
+                </div>
+
+                <div class="upload-container">
+                    <div class="upload-zone" id="uploadZone1">
+                        <i class="bi bi-image" style="font-size: 1.5rem; color: var(--admin-accent);"></i>
+                        <span class="stat-label">Primary Image<br><small>Drop Here</small></span>
+                        <img id="preview1" class="upload-preview">
+                        <input type="file" id="fileInput1" hidden accept="image/*">
+                        <input type="hidden" id="prodImg1">
+                    </div>
+                    <div class="upload-zone" id="uploadZone2">
+                        <i class="bi bi-images" style="font-size: 1.5rem; color: var(--admin-accent);"></i>
+                        <span class="stat-label">Secondary View<br><small>Optional</small></span>
+                        <img id="preview2" class="upload-preview">
+                        <input type="file" id="fileInput2" hidden accept="image/*">
+                        <input type="hidden" id="prodImg2">
+                    </div>
+                </div>
+
+                <button type="submit" class="btn-primary-premium"
+                    style="width: 100%; padding: 1.25rem; font-size: 1.1rem; border-radius: 20px;">
+                    Confirm & Save Changes
+                </button>
+            </form>
+        </div>
+    </div>
+
+    <script src="js/products-admin.js"></script>
+    <script src="js/analytics.js"></script>
+</body>
+
+</html>

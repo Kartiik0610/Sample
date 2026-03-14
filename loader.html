@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Welcome | Shri Aadinath Exports</title>
+  <link rel="shortcut icon" href="https://is1-ssl.mzstatic.com/image/thumb/Purple221/v4/af/8e/77/af8e77d0-ebf9-2d97-1d49-61bb8e4cad84/AppIcon-0-0-1x_U007emarketing-0-8-0-85-220.png/200x200ia-75.webp" type="image/x-icon">
+
+  <style>
+    :root {
+      --indigo: #3D2F85;
+      --crimson: #E31E27;
+      --offwhite: #F5F6FA;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: "Inter", system-ui, sans-serif;
+    }
+
+    body {
+      height: 100vh;
+      background: linear-gradient(
+        135deg,
+        var(--indigo),
+        #2b1f66
+      );
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+    }
+
+    /* ================= LOADER ================= */
+    .loader-container {
+      text-align: center;
+      color: #ffffff;
+      animation: fadeIn 1s ease forwards;
+    }
+
+    .loader-container h1 {
+      font-size: 36px;
+      font-weight: 600;
+      letter-spacing: 0.5px;
+      margin-bottom: 16px;
+      animation: slideUp 1s ease forwards;
+    }
+
+    .loader-container span {
+      color: var(--crimson);
+    }
+
+    /* Loading bar */
+    .loading-bar {
+      width: 220px;
+      height: 4px;
+      background: rgba(255, 255, 255, 0.25);
+      border-radius: 10px;
+      overflow: hidden;
+      margin: 0 auto;
+    }
+
+    .loading-bar::after {
+      content: "";
+      display: block;
+      width: 0%;
+      height: 100%;
+      background: #ffffff;
+      animation: loadProgress 2.8s linear forwards;
+    }
+
+    /* ================= ANIMATIONS ================= */
+    @keyframes loadProgress {
+      from { width: 0%; }
+      to { width: 100%; }
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+
+    @keyframes slideUp {
+      from {
+        transform: translateY(12px);
+        opacity: 0;
+      }
+      to {
+        transform: translateY(0);
+        opacity: 1;
+      }
+    }
+
+    /* ================= RESPONSIVE ================= */
+    @media (max-width: 576px) {
+      .loader-container h1 {
+        font-size: 26px;
+      }
+
+      .loading-bar {
+        width: 180px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="loader-container">
+    <h1>Welcome to <span>Shri Aadinath Exports</span></h1>
+    <div class="loading-bar"></div>
+  </div>
+
+  <script>
+    // Redirect exactly after 2800ms
+    setTimeout(() => {
+      window.location.href = "index.html";
+    }, 1000);
+  </script>
+
+</body>
+</html>

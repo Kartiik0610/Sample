@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Delete Account | Shri Adinath Exports</title>
+  <meta name="description" content="Account deletion request page for Shri Adinath Exports application users.">
+
+  <!-- Bootstrap -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="js/common.js" defer></script>
+
+  <!-- Custom CSS -->
+  <link rel="stylesheet" href="css/footer.css">
+  <link rel="stylesheet" href="css/delete-account.css">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="shortcut icon" href="https://is1-ssl.mzstatic.com/image/thumb/Purple221/v4/af/8e/77/af8e77d0-ebf9-2d97-1d49-61bb8e4cad84/AppIcon-0-0-1x_U007emarketing-0-8-0-85-220.png/200x200ia-75.webp" type="image/x-icon">
+</head>
+<body>
+
+
+  <div class="page-wrapper">
+    <div class="delete-card">
+
+      <!-- Logo -->
+      <div class="logo">
+        <a href="index.html">
+            <img src="assets/logo.png" alt="Company Logo">
+        </a>
+      </div>
+
+      <h4 class="title">Delete Account</h4>
+
+      <form id="deleteForm">
+        <!-- Web3Forms -->
+        <input type="hidden" name="access_key" value="YOUR_WEB3FORMS_ACCESS_KEY">
+        <input type="hidden" name="subject" value="Account Deletion Request">
+        <input type="hidden" name="from_name" value="Account Deletion Page">
+
+        <div class="mb-3">
+          <input type="text" name="name" class="form-control custom-input" placeholder="Name Here" required>
+        </div>
+
+        <div class="mb-4">
+          <input type="tel" name="phone" class="form-control custom-input" placeholder="Phone Number" inputmode="numeric" required>
+        </div>
+
+        <div class="btn-row">
+          <button type="button" class="btn btn-secondary back-btn" onclick="goBack()">Back</button>
+          <button type="submit" class="btn btn-outline-danger">
+            Delete Account
+          </button>
+        </div>
+
+        <p class="policy-text">
+          <a href="terms-and-conditions.html">Terms & Conditions</a> |
+          <a href="privacy-policy.html">Privacy Policy</a>.
+        </p>
+      </form>
+
+    </div>
+  </div>
+
+  <script src="js/delete-account.js" defer></script>
+</body>
+</html>
