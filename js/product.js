@@ -124,8 +124,8 @@ function renderProducts() {
       <div class="col-12 col-sm-6 col-md-4 col-lg-3">
         <div class="product-card">
           <div class="product-image" id="${sliderId}">
-            <img src="${product.img1}" class="active" alt="${product.name}">
-            <img src="${product.img2}" alt="${product.name}">
+            <img src="${product.img1}" class="active" alt="${product.name}" loading="lazy">
+            <img src="${product.img2}" alt="${product.name}" loading="lazy">
             <button class="image-btn prev" data-id="${sliderId}">&#10094;</button>
             <button class="image-btn next" data-id="${sliderId}">&#10095;</button>
           </div>
